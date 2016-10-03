@@ -9,6 +9,28 @@
   	<param-value>Employee Admin Tool</param-value>
   </context-param>
   
+  <!-- Database connection properties -->  
+  <context-param>
+  	<param-name>dbUrl</param-name>
+  	<param-value>Beangrinder.bcit.ca</param-value>
+  </context-param>
+  <context-param>
+  	<param-name>dbUsername</param-name>
+  	<param-value>javastudent</param-value>
+  </context-param>
+  <context-param>
+  	<param-name>dbPassword</param-name>
+  	<param-value>compjava</param-value>
+  </context-param>
+  <context-param>
+  	<param-name>dbDriver</param-name>
+  	<param-value>com.microsoft.sqlserver.jdbc.SQLServerDriver</param-value>
+  </context-param>
+  	
+  <listener>
+  	<listener-class>ca.comp.bcit4613.database.DatabaseInitListener</listener-class>
+  </listener>
+  
   <servlet>
   	<servlet-name>index</servlet-name>
   	<jsp-file>/index.jsp</jsp-file>
