@@ -1,0 +1,44 @@
+<!DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app>
+  <display-name>Archetype Created Web Application</display-name>
+  <context-param>
+  	<param-name>title</param-name>
+  	<param-value>Employee Admin Tool</param-value>
+  </context-param>
+  
+  <servlet>
+  	<servlet-name>index</servlet-name>
+  	<jsp-file>/index.jsp</jsp-file>
+  </servlet>
+  <servlet>
+  	<servlet-name>login</servlet-name>
+  	<jsp-file>/Login.jsp</jsp-file>
+  </servlet>
+  <servlet>
+  	<servlet-name>logout</servlet-name>
+  	<jsp-file>/Logout.jsp</jsp-file>
+  </servlet>
+  <servlet>
+  	<servlet-name>addEmployees</servlet-name>
+  	<jsp-file>/addEmployees.jsp</jsp-file>
+  </servlet>
+  <servlet>
+  	<servlet-name>deleteEmployees</servlet-name>
+  	<jsp-file>/deleteEmployees.jsp</jsp-file>
+  </servlet>
+  <servlet>
+  	<servlet-name>employees</servlet-name>
+  	<jsp-file>/Employees.jsp</jsp-file>
+  </servlet>
+  <servlet>
+  	<servlet-name>findEmployees</servlet-name>
+  	<jsp-file>/findEmployees.jsp</jsp-file>
+  </servlet>
+  
+  <welcome-file-list>
+  	<welcome-file>/Login.jsp</welcome-file>
+  </welcome-file-list>
+</web-app>
