@@ -1,5 +1,6 @@
 package ca.comp.bcit4613.database;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
@@ -8,6 +9,11 @@ import javax.servlet.ServletContextListener;
  *
  */
 public class DatabaseInitListener implements ServletContextListener {
+	
+	private String url;
+	private String username;
+	private String password;
+	private String driver;
 
     /**
      * Default constructor. 
@@ -27,7 +33,8 @@ public class DatabaseInitListener implements ServletContextListener {
      * @see ServletContextListener#contextInitialized(ServletContextEvent)
      */
     public void contextInitialized(ServletContextEvent sce)  { 
-         // TODO Auto-generated method stub
+         ServletContext context = sce.getServletContext();
+         
     }
 	
 }
