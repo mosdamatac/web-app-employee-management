@@ -9,11 +9,6 @@ import javax.servlet.ServletContextListener;
  *
  */
 public class DatabaseInitListener implements ServletContextListener {
-	
-	private String url;
-	private String username;
-	private String password;
-	private String driver;
 
     /**
      * Default constructor. 
@@ -34,7 +29,10 @@ public class DatabaseInitListener implements ServletContextListener {
      */
     public void contextInitialized(ServletContextEvent sce)  { 
          ServletContext context = sce.getServletContext();
-         
+         String url = context.getInitParameter("dbUrl");
+         String username = context.getInitParameter("dbUsername");
+         String password = context.getInitParameter("dbPassword");
+         String driver = context.getInitParameter("dbDriver");
     }
 	
 }
