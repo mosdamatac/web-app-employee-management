@@ -12,7 +12,7 @@
   <!-- Database connection properties -->  
   <context-param>
   	<param-name>dbUrl</param-name>
-  	<param-value>Beangrinder.bcit.ca</param-value>
+  	<param-value>jdbc:sqlserver://Beangrinder.bcit.ca</param-value>
   </context-param>
   <context-param>
   	<param-name>dbUsername</param-name>

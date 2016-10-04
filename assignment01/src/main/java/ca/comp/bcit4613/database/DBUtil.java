@@ -31,12 +31,11 @@ public class DBUtil {
 		
 		try {
 			Class.forName(driver);
-			connection = DriverManager.getConnection(url);
+			connection = DriverManager.getConnection(url, username, password);
 		} catch (ClassNotFoundException ex) {
 			System.out.println(ex);
 		}
 		
 		return connection;
 	}
-
 }
