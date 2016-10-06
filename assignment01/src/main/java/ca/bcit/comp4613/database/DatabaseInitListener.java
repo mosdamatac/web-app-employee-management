@@ -1,4 +1,4 @@
-package ca.comp.bcit4613.database;
+package ca.bcit.comp4613.database;
 
 import java.sql.Connection;
 import java.sql.SQLException;

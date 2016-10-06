@@ -28,7 +28,7 @@
   </context-param>
   	
   <listener>
-  	<listener-class>ca.comp.bcit4613.database.DatabaseInitListener</listener-class>
+  	<listener-class>ca.bcit.comp4613.database.DatabaseInitListener</listener-class>
   </listener>
   
   <servlet>

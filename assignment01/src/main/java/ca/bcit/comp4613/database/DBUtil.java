@@ -1,8 +1,10 @@
-package ca.comp.bcit4613.database;
+package ca.bcit.comp4613.database;
 
 import java.sql.SQLException;
 import java.sql.Connection;
+import java.sql.DatabaseMetaData;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 
 public class DBUtil {
 	
@@ -37,5 +39,27 @@ public class DBUtil {
 		}
 		
 		return connection;
+	}
+	
+	public boolean tableExists(String tableName) throws SQLException {
+		ResultSet resultSet = null;
+		
+		try {
+			Connection dbConn = getConnection();
+			DatabaseMetaData dbMetaData = dbConn.getMetaData();
+			resultSet = dbMetaData.getTables(dbConn.getCatalog(), "%", "%", null);
+			String rsTableName = "";
+			
+			while (resultSet.next()) {
+				rsTableName = resultSet.getString("TABLE_NAME");
+				if (rsTableName.equalsIgnoreCase(tableName)) {
+					return true;
+				}
+			}
+		} finally {
+			resultSet.close();
+		}
+		
+		return false;
 	}
 }

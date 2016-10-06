@@ -1,4 +1,4 @@
-package ca.comp.bcit4613.data;
+package ca.bcit.comp4613.data;
 
 import java.util.Date;
 
