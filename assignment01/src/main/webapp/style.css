@@ -21,6 +21,7 @@
 #content label {
 	padding: .15em;
 	font-size: .80em;
+	width: 20em;
 }
 
 #content input[type="text"] {

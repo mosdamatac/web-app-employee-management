@@ -22,10 +22,10 @@
 			<input type="text" name="tbLastName"/><br/>
 			<label for="tbDOE">DOE:</label>
 			<input type="text" name="tbDOE"/>
+			<div id="footer">
+				<input type="button" name="btnAddEmployee" value="Add Employee"/>
+			</div>
 		</form>
-	</div>
-	<div id="footer">
-		<input type="button" name="btnAddEmployee" value="Add Employee"/>
 	</div>
 </div>
 </body>

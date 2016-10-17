@@ -1,15 +1,16 @@
-package ca.bcit.comp4613.database;
+package ca.bcit.comp4613.database.util;
 
 import java.sql.SQLException;
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-public class DBUtil {
+public class DbUtil {
 	
-	private static DBUtil instance = new DBUtil();
-	private Connection connection;
+	private static DbUtil instance = new DbUtil();
+	private Connection dbConn;
 	private String url;
 	private String username;
 	private String password;
@@ -22,23 +23,23 @@ public class DBUtil {
 		if (!driver.isEmpty()) this.driver = driver;
 	}
 	
-	public static DBUtil getInstance() {
+	public static DbUtil getInstance() {
 		return instance;
 	}
 	
 	public Connection getConnection() throws SQLException {
-		if (connection != null) {
-			return connection;
+		if (dbConn != null) {
+			return dbConn;
 		}
 		
 		try {
 			Class.forName(driver);
-			connection = DriverManager.getConnection(url, username, password);
+			dbConn = DriverManager.getConnection(url, username, password);
 		} catch (ClassNotFoundException ex) {
 			System.out.println(ex);
 		}
 		
-		return connection;
+		return dbConn;
 	}
 	
 	public boolean tableExists(String tableName) throws SQLException {
@@ -61,5 +62,26 @@ public class DBUtil {
 		}
 		
 		return false;
+	}
+	
+	public void closeStatement(PreparedStatement statement) {
+		try {
+			if (statement != null) {
+				statement.close();
+			}
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+		}
+	}
+	
+	public void shutdown() {
+		if (dbConn != null) {
+			try {
+				dbConn.close();
+				dbConn = null;
+			} catch (SQLException ex) {
+				ex.printStackTrace();
+			}
+		}
 	}
 }
