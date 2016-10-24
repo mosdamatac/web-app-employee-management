@@ -1,36 +1,26 @@
-<!DOCTYPE web-app PUBLIC
- "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
- "http://java.sun.com/dtd/web-app_2_3.dtd" >
-
-<web-app>
+<web-app version="3.0"
+         xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
   <display-name>Archetype Created Web Application</display-name>
   <context-param>
   	<param-name>title</param-name>
   	<param-value>Employee Admin Tool</param-value>
   </context-param>
   
-  <!-- Database connection properties -->  
-  <context-param>
-  	<param-name>dbUrl</param-name>
-  	<param-value>jdbc:sqlserver://Beangrinder.bcit.ca</param-value>
-  </context-param>
-  <context-param>
-  	<param-name>dbUsername</param-name>
-  	<param-value>javastudent</param-value>
-  </context-param>
-  <context-param>
-  	<param-name>dbPassword</param-name>
-  	<param-value>compjava</param-value>
-  </context-param>
-  <context-param>
-  	<param-name>dbDriver</param-name>
-  	<param-value>com.microsoft.sqlserver.jdbc.SQLServerDriver</param-value>
-  </context-param>
-  	
-  <listener>
-  	<listener-class>ca.bcit.comp4613.database.DatabaseInitListener</listener-class>
-  </listener>
+  <!-- Filters -->
+  <filter>
+  	<filter-name>DatabaseFilter</filter-name>
+  	<filter-class>ca.bcit.comp4613.filter.DatabaseFilter</filter-class>
+  </filter>
   
+  <!-- FilterMapping -->
+  <filter-mapping>
+  	<filter-name>DatabaseFilter</filter-name>
+  	<url-pattern>/index.jsp</url-pattern>
+  </filter-mapping>
+  
+  <!-- Servlets -->
   <servlet>
   	<servlet-name>index</servlet-name>
   	<jsp-file>/index.jsp</jsp-file>
@@ -41,26 +31,52 @@
   </servlet>
   <servlet>
   	<servlet-name>logout</servlet-name>
-  	<jsp-file>/Logout.jsp</jsp-file>
+  	<jsp-file>/includes/Logout.jsp</jsp-file>
   </servlet>
   <servlet>
   	<servlet-name>addEmployees</servlet-name>
-  	<jsp-file>/addEmployees.jsp</jsp-file>
+  	<jsp-file>/includes/addEmployees.jsp</jsp-file>
   </servlet>
   <servlet>
   	<servlet-name>deleteEmployees</servlet-name>
-  	<jsp-file>/deleteEmployees.jsp</jsp-file>
+  	<jsp-file>/includes/deleteEmployees.jsp</jsp-file>
   </servlet>
   <servlet>
   	<servlet-name>employees</servlet-name>
-  	<jsp-file>/Employees.jsp</jsp-file>
+  	<jsp-file>/includes/Employees.jsp</jsp-file>
   </servlet>
   <servlet>
   	<servlet-name>findEmployees</servlet-name>
-  	<jsp-file>/findEmployees.jsp</jsp-file>
+  	<jsp-file>/includes/findEmployees.jsp</jsp-file>
   </servlet>
   
+  <!-- Servlet mapping -->
+  <servlet-mapping>
+  	<servlet-name>index</servlet-name>
+  	<url-pattern>/index.jsp</url-pattern>
+  </servlet-mapping>
+  
   <welcome-file-list>
-  	<welcome-file>/Login.jsp</welcome-file>
+  	<welcome-file>/index.jsp</welcome-file>
   </welcome-file-list>
+  
+  <security-constraint>
+  	<web-resource-collection>
+  		<web-resource-name>Index</web-resource-name>
+  		<url-pattern>/index.jsp</url-pattern>
+  	</web-resource-collection>
+  	<auth-constraint>
+  		<role-name>user</role-name>
+  		<role-name>admin</role-name>
+  	</auth-constraint>
+  </security-constraint>
+  
+  <login-config>
+  	<auth-method>FORM</auth-method>
+  	<form-login-config>
+  		<form-login-page>/Login.jsp</form-login-page>
+  		<form-error-page>/login-error.html</form-error-page>
+  	</form-login-config>
+  </login-config>
+  
 </web-app>

@@ -8,15 +8,16 @@
 </head>
 <body>
 <h2>Login</h2>
+<h1>Sorry, you must log in before accessing this resource.</h1>
 <br/><br/>
-<form>
+<form action="j_security_check" method="post">
 	<label for="username">User Name: </label>
-	<input type="text" name="tbUsername"/>
+	<input type="text" name="j_username"/>
 	<br/>
 	<label for="password">Password: </label>
-	<input type="password" name="tbPassword"/>
+	<input type="password" name="j_password"/>
 	<br/>
-	<input type="button" name="btnLogin" value="Log In"/>
+	<input type="submit" name="btnLogin" value="Log In"/>
 </form>
 </body>
 </html>

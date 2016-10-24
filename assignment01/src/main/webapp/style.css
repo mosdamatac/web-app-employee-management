@@ -29,3 +29,30 @@
 	display: inline-block;
 	text-align: right;
 }
+
+div #left {
+    width: 74%;
+    height: 200px;
+    float: left;
+}
+div #right {
+	width: 25%;
+    float: right;
+    height: 200px;
+}
+
+.pageSpace {
+	margin: 0 0 1em 0;
+}
+
+input[type="text"] {
+	width: 95%;
+}
+
+table {
+	width: 100%;
+}
+
+.labelTD {
+	width: 4em;
+}
