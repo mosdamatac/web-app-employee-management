@@ -1,6 +1,6 @@
 package ca.bcit.comp4613.data;
 
-import java.util.Date;
+import java.sql.Date;
 
 /**
  * @author A00973641, Mara Damatac

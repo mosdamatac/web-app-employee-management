@@ -20,7 +20,7 @@ public class EmployeeDao {
 		DbUtil db = DbUtil.getInstance();
 		Connection dbConn = null;
 		PreparedStatement ps = null;
-		String sql = String.format("SELECT * FROM %s", DbConstants.EMPLOYEES_TABLE_NAME);
+		String sql = String.format("SELECT ID, firstName, lastName, dob FROM %s", DbConstants.EMPLOYEES_TABLE_NAME);
 		
 		try {
 			dbConn = db.getConnection();
@@ -119,5 +119,36 @@ public class EmployeeDao {
 		}
 		
 		return count;
+	}
+	
+	public Employee search(String id) {
+		DbUtil db = DbUtil.getInstance();
+		Connection dbConn = null;
+		PreparedStatement ps = null;
+		String sql = String.format("SELECT ID, firstName, lastName, dob FROM %s WHERE ID=?", DbConstants.EMPLOYEES_TABLE_NAME);
+		
+		Employee employee = null;
+		try {
+			System.out.println("Finding employee: " + id);
+			dbConn = db.getConnection();
+			
+			ps = dbConn.prepareStatement(sql);
+			ps.setString(1, id);
+			ResultSet rs = ps.executeQuery();
+			
+			if (rs.next()) {
+				employee = new Employee();
+				employee.setId(rs.getString(1));
+				employee.setFirstName(rs.getString(2));
+				employee.setLastName(rs.getString(3));
+				employee.setDateOfBirth(rs.getDate(4));
+			}
+			
+			
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+		}
+		
+		return employee;
 	}
 }

@@ -5,7 +5,7 @@
 		<h4>Find An Employee By ID</h4>
 	</div>
 	<div id="content">
-		<form>
+		<form action="ControllerServlet" method="post">
 			<table>
 				<tr>
 					<td class="labelTD"><label for="tbID">ID:</label></td>
@@ -13,7 +13,7 @@
 				</tr>
 			</table>
 			<div id="footer">
-				<input type="button" name="btnSearchEmployee" value="Search"/>
+				<input type="submit" name="btnSearchEmployee" value="Search"/>
 			</div>
 		</form>
 	</div>

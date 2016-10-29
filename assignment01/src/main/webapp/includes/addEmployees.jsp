@@ -6,7 +6,7 @@
 		<h4>Add Employees</h4>
 	</div>
 	<div id="content">
-		<form>
+		<form action="ControllerServlet" method="post">
 			<table>
 				<tr>
 					<td class="labelTD"><label for="tbID">ID:</label></td>
@@ -26,7 +26,7 @@
 				</tr>
 			</table>			
 			<div id="footer">
-				<input type="button" name="btnAddEmployee" value="Add Employee"/>
+				<input type="submit" name="btnAddEmployee" value="Add Employee"/>
 			</div>
 		</form>
 	</div>
