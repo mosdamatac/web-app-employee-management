@@ -7,9 +7,9 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-public class DbUtil {
+public class DBUtil {
 	
-	private static DbUtil instance = new DbUtil();
+	private static DBUtil instance = new DBUtil();
 	private Connection dbConn;
 	private String url;
 	private String username;
@@ -23,7 +23,7 @@ public class DbUtil {
 		if (!driver.isEmpty()) this.driver = driver;
 	}
 	
-	public static DbUtil getInstance() {
+	public static DBUtil getInstance() {
 		return instance;
 	}
 	

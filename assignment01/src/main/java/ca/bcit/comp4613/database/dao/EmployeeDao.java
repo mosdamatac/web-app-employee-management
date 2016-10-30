@@ -9,18 +9,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ca.bcit.comp4613.data.Employee;
-import ca.bcit.comp4613.database.util.DbConstants;
-import ca.bcit.comp4613.database.util.DbUtil;
+import ca.bcit.comp4613.database.util.DBConstants;
+import ca.bcit.comp4613.database.util.DBUtil;
 
 public class EmployeeDao {
 
 	public List<Employee> get() {
 		System.out.println("Retrieving employees");
 		List<Employee> employees = new ArrayList<Employee>();
-		DbUtil db = DbUtil.getInstance();
+		DBUtil db = DBUtil.getInstance();
 		Connection dbConn = null;
 		PreparedStatement ps = null;
-		String sql = String.format("SELECT ID, firstName, lastName, dob FROM %s", DbConstants.EMPLOYEES_TABLE_NAME);
+		String sql = String.format("SELECT ID, firstName, lastName, dob FROM %s", DBConstants.EMPLOYEES_TABLE_NAME);
 		
 		try {
 			dbConn = db.getConnection();
@@ -46,10 +46,10 @@ public class EmployeeDao {
 	}
 	
 	public int add(Employee employee) {
-		DbUtil db = DbUtil.getInstance();
+		DBUtil db = DBUtil.getInstance();
 		Connection dbConn = null;
 		PreparedStatement ps = null;
-		String sql = String.format("INSERT INTO %s VALUES (?, ?, ?, ?)", DbConstants.EMPLOYEES_TABLE_NAME);
+		String sql = String.format("INSERT INTO %s VALUES (?, ?, ?, ?)", DBConstants.EMPLOYEES_TABLE_NAME);
 		int count = 0;
 		
 		try {
@@ -72,10 +72,10 @@ public class EmployeeDao {
 	}
 	
 	public int update(Employee employee) {
-		DbUtil db = DbUtil.getInstance();
+		DBUtil db = DBUtil.getInstance();
 		Connection dbConn = null;
 		PreparedStatement ps = null;
-		String sql = String.format("UPDATE %s SET %s=?, %s=?, %s=? WHERE %s=?", DbConstants.EMPLOYEES_TABLE_NAME,
+		String sql = String.format("UPDATE %s SET %s=?, %s=?, %s=? WHERE %s=?", DBConstants.EMPLOYEES_TABLE_NAME,
 				"firstName", "lastName", "dob", "ID");
 		int count = 0;
 		
@@ -99,10 +99,10 @@ public class EmployeeDao {
 	}
 	
 	public int delete(String id) {
-		DbUtil db = DbUtil.getInstance();
+		DBUtil db = DBUtil.getInstance();
 		Connection dbConn = null;
 		PreparedStatement ps = null;
-		String sql = String.format("DELETE FROM %s WHERE ID=?", DbConstants.EMPLOYEES_TABLE_NAME);
+		String sql = String.format("DELETE FROM %s WHERE ID=?", DBConstants.EMPLOYEES_TABLE_NAME);
 		int count = 0;
 		
 		try {
@@ -122,10 +122,10 @@ public class EmployeeDao {
 	}
 	
 	public Employee search(String id) {
-		DbUtil db = DbUtil.getInstance();
+		DBUtil db = DBUtil.getInstance();
 		Connection dbConn = null;
 		PreparedStatement ps = null;
-		String sql = String.format("SELECT ID, firstName, lastName, dob FROM %s WHERE ID=?", DbConstants.EMPLOYEES_TABLE_NAME);
+		String sql = String.format("SELECT ID, firstName, lastName, dob FROM %s WHERE ID=?", DBConstants.EMPLOYEES_TABLE_NAME);
 		
 		Employee employee = null;
 		try {

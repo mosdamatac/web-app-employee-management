@@ -14,9 +14,13 @@
 		<div class="pageSpace"><jsp:include page="/includes/Logout.jsp" flush="true"/></div>
 	</div>
 	<div id="right">
-		<div class="pageSpace"><jsp:include page="/includes/addEmployees.jsp" flush="true"/></div>
+	<%if (request.isUserInRole("admin")) { %>
+		<div class="pageSpace"><jsp:include page="/includes/restricted/addEmployees.jsp" flush="true"/></div>
+	<%} %>
 		<div class="pageSpace"><jsp:include page="/includes/findEmployees.jsp" flush="true"/></div>
-		<div class="pageSpace"><jsp:include page="/includes/deleteEmployees.jsp" flush="true"/></div>
+	<%if (request.isUserInRole("admin")) { %>
+		<div class="pageSpace"><jsp:include page="/includes/restricted/deleteEmployees.jsp" flush="true"/></div>
+	<%} %>
 	</div>
 </div>
 </body>

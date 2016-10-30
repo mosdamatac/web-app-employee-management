@@ -24,12 +24,6 @@
 	width: 20em;
 }
 
-#content input[type="text"] {
-	height: .90em;
-	display: inline-block;
-	text-align: right;
-}
-
 div #left {
     width: 74%;
     height: 200px;
@@ -55,4 +49,8 @@ table {
 
 .labelTD {
 	width: 4em;
+}
+
+#statusCode, #searchedEmployee {
+	font-size: .70em;
 }

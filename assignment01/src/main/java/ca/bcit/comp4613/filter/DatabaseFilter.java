@@ -15,19 +15,21 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
-import ca.bcit.comp4613.database.util.DbConstants;
-import ca.bcit.comp4613.database.util.DbUtil;
+import ca.bcit.comp4613.database.util.DBConstants;
+import ca.bcit.comp4613.database.util.DBUtil;
 import ca.bcit.comp4613.database.util.EncryptDecrypt;
 
 /**
  * Servlet Filter implementation class DatabaseFilter
  */
-@WebFilter ( filterName="DatabaseFilter", urlPatterns="/index.jsp", servletNames={"index"})
+@WebFilter ( filterName="DatabaseFilter", urlPatterns="/*")
 public class DatabaseFilter implements Filter {
 	
 	private FilterConfig config;
-	private DbUtil dbUtil;
+	private DBUtil dbUtil;
 
 	/**
 	 * @see Filter#destroy()
@@ -41,29 +43,30 @@ public class DatabaseFilter implements Filter {
 	 */
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		System.out.println("DatabaseFilter called...");
+		
    	 	ServletContext context = config.getServletContext();
     	Properties dbProps = new Properties();
          
         try {
-        	InputStream inputStream = context.getResourceAsStream(DbConstants.DB_PROPERTIES_FILENAME);
+        	InputStream inputStream = context.getResourceAsStream(DBConstants.DB_PROPERTIES_FILENAME);
         	if (inputStream != null) {
         		dbProps.load(inputStream);
         	} else {
-        		throw new FileNotFoundException("Property file " + DbConstants.DB_PROPERTIES_FILENAME + " not found.");
+        		throw new FileNotFoundException("Property file " + DBConstants.DB_PROPERTIES_FILENAME + " not found.");
         	}
         	
-        	String url = dbProps.getProperty(DbConstants.DB_URL_KEY);
-        	String username = dbProps.getProperty(DbConstants.DB_USER_KEY);
-        	String encryptedPassword = dbProps.getProperty(DbConstants.DB_PASSWORD_KEY);
-        	String driver = dbProps.getProperty(DbConstants.DB_DRIVER_KEY);
+        	String url = dbProps.getProperty(DBConstants.DB_URL_KEY);
+        	String username = dbProps.getProperty(DBConstants.DB_USER_KEY);
+        	String encryptedPassword = dbProps.getProperty(DBConstants.DB_PASSWORD_KEY);
+        	String driver = dbProps.getProperty(DBConstants.DB_DRIVER_KEY);
         	
         	EncryptDecrypt encryptDecrypt = new EncryptDecrypt();
-        	encryptDecrypt.init("lab03passcode", encryptedPassword);
+        	encryptDecrypt.init("assignmentPasscode", encryptedPassword);
         	String password = encryptDecrypt.decryptValue();
         	
         	System.out.println(password);
             
-            dbUtil = DbUtil.getInstance();
+            dbUtil = DBUtil.getInstance();
             dbUtil.init(url, username, password, driver);
         	 
 			Connection connection = dbUtil.getConnection();

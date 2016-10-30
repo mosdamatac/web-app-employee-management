@@ -6,6 +6,7 @@ import java.text.SimpleDateFormat;
 import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -13,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import ca.bcit.comp4613.data.Employee;
 import ca.bcit.comp4613.database.dao.EmployeeDao;
+import ca.bcit.comp4613.util.StatusConstants;
 
 /**
  * Servlet implementation class ControllerServlet
@@ -41,7 +43,12 @@ public class ControllerServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 			
-			dao.add(employee);
+			int result = dao.add(employee);
+			if (result > 0) {
+				request.setAttribute("addStatus", StatusConstants.ADD_SUCCESS);
+			} else {
+				request.setAttribute("addStatus", StatusConstants.ADD_FAIL);
+			}
 			
 		} else if (request.getParameter("btnDeleteEmployee") != null) {
 			System.out.println("Delete");
@@ -55,6 +62,9 @@ public class ControllerServlet extends HttpServlet {
 		} else if (request.getParameter("btnSignOut") != null) {
 			System.out.println("Sign out");
 		}
+		
+		RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
+		rd.forward(request, response);
 	}
 
 	/**

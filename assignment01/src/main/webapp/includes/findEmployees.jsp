@@ -15,6 +15,8 @@
 			<div id="footer">
 				<input type="submit" name="btnSearchEmployee" value="Search"/>
 			</div>
+			<label id="searchedEmployee">${requestScope.searchedEmployee }</label>
+			<label id="statusCode">${requestScope.findStatus }</label>
 		</form>
 	</div>
 </div>

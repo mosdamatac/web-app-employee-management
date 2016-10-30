@@ -15,6 +15,7 @@
 			<div id="footer">
 				<input type="submit" name="btnDeleteEmployee" value="Delete"/>
 			</div>
+			<label id="statusCode">${requestScope.deleteStatus }</label>
 		</form>
 	</div>
 </div>

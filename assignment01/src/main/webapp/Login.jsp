@@ -11,13 +11,19 @@
 <h1>Sorry, you must log in before accessing this resource.</h1>
 <br/><br/>
 <form action="j_security_check" method="post">
-	<label for="username">User Name: </label>
-	<input type="text" name="j_username"/>
-	<br/>
-	<label for="password">Password: </label>
-	<input type="password" name="j_password"/>
-	<br/>
-	<input type="submit" name="btnLogin" value="Log In"/>
+	<table>
+		<tr>
+			<td><label for="username">User Name: </label></td>
+			<td><input type="text" name="j_username"/></td>
+		</tr>
+		<tr>
+			<td><label for="password">Password: </label></td>
+			<td><input type="password" name="j_password"/></td>
+		</tr>
+		<tr>
+			<td colspan="2"><input type="submit" name="btnLogin" value="Log In"/></td>
+		</tr>
+	</table>	
 </form>
 </body>
 </html>

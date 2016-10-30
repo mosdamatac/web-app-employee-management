@@ -6,7 +6,7 @@
 		<h4>Sign Off</h4>
 	</div>
 	<div id="footer">
-		<form action="ControllerServlet" method="post">
+		<form action="Logout" method="post">
 			<input type="submit" name="btnSignOut" value="Sign Out"/>
 		</form>
 	</div>

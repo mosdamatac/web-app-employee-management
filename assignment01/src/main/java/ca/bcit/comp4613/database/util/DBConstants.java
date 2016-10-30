@@ -1,6 +1,6 @@
 package ca.bcit.comp4613.database.util;
 
-public interface DbConstants {
+public interface DBConstants {
 
 	String DB_PROPERTIES_FILENAME = "/WEB-INF/dbProps.properties";
 	String DB_DRIVER_KEY = "Driver";

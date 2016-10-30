@@ -28,6 +28,7 @@
 			<div id="footer">
 				<input type="submit" name="btnAddEmployee" value="Add Employee"/>
 			</div>
+			<label id="statusCode">${requestScope.addStatus }</label>
 		</form>
 	</div>
 </div>
