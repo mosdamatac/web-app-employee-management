@@ -51,6 +51,21 @@ table {
 	width: 4em;
 }
 
-#statusCode, #searchedEmployee {
+#statusCode, #searchedEmployee, #employeePagination {
 	font-size: .70em;
+}
+
+.dataTable {
+	border-collapse: collapse;
+	margin: .5em 0 .25em 0;
+}
+
+.dataTable th {
+	background: #eaeae1;
+}
+
+.dataTable, .dataTable th, .dataTable td {
+	border: 1px solid #e1e1d0;	
+	text-align: left;
+	font-size: .90em;
 }

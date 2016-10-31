@@ -5,24 +5,24 @@
 	<div id="header">
 		<h4>Add Employees</h4>
 	</div>
-	<div id="content">
+	<div id="content">		
 		<form action="ControllerServlet" method="post">
 			<table>
 				<tr>
-					<td class="labelTD"><label for="tbID">ID:</label></td>
-					<td><input type="text" name="tbID"/></td>
+					<td class="labelTD"><label for="id">ID:</label></td>
+					<td><input type="text" name="id"/></td>
 				</tr>
 				<tr>
-					<td><label for="tbFirstName">First<br/>Name:</label></td>
-					<td><input type="text" name="tbFirstName"/></td>
+					<td><label for="firstName">First<br/>Name:</label></td>
+					<td><input type="text" name="firstName"/></td>
 				</tr>
 				<tr>
-					<td><label for="tbLastName">Last<br/>Name:</label></td>
-					<td><input type="text" name="tbLastName"/></td>
+					<td><label for="lastName">Last<br/>Name:</label></td>
+					<td><input type="text" name="lastName"/></td>
 				</tr>
 				<tr>
-					<td><label for="tbDOE">DOE:</label></td>
-					<td><input type="text" name="tbDOE"/></td>
+					<td><label for="dateOfBirth" value="YYYY/MM/DD">DOE:</label></td>
+					<td><input type="text" name="dateOfBirth"/></td>
 				</tr>
 			</table>			
 			<div id="footer">

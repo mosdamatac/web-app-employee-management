@@ -8,8 +8,8 @@
 		<form action="ControllerServlet" method="post">
 			<table>
 				<tr>
-					<td class="labelTD"><label for="tbID">ID:</label></td>
-					<td><input type="text" name="tbID"/><br/></td>
+					<td class="labelTD"><label for="id">ID:</label></td>
+					<td><input type="text" name="id"/><br/></td>
 				</tr>
 			</table>
 			<div id="footer">

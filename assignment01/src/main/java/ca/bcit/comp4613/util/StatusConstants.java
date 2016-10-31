@@ -9,4 +9,5 @@ public interface StatusConstants {
 	String FIND_FAIL = "Result Code: 801 Description: No match found";
 	String DELETE_SUCCESS = "Result Code: 001 Description: Deleted Successfully";
 	String DELETE_FAIL = "Result Code: 902 Description: Delete Unsuccessful";
+	int ADD_DUPLICATE_CODE = 2627;
 }

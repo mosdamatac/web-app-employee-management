@@ -31,12 +31,12 @@ public class ControllerServlet extends HttpServlet {
 		if (request.getParameter("btnAddEmployee") != null) {
 			System.out.println("Add");
 			Employee employee = new Employee();
-			employee.setId(request.getParameter("tbID"));
-			employee.setFirstName(request.getParameter("tbFirstName"));
-			employee.setLastName(request.getParameter("tbLastName"));
+			employee.setId(request.getParameter("id"));
+			employee.setFirstName(request.getParameter("firstName"));
+			employee.setLastName(request.getParameter("lastName"));
 			try {
 				SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd");
-				java.util.Date parsed = format.parse(request.getParameter("tbDOE"));
+				java.util.Date parsed = format.parse(request.getParameter("dateOfBirth"));
 				java.sql.Date dateOfBirth = new java.sql.Date(parsed.getTime());
 				employee.setDateOfBirth(dateOfBirth);
 			} catch (ParseException e) {
@@ -44,7 +44,9 @@ public class ControllerServlet extends HttpServlet {
 			}
 			
 			int result = dao.add(employee);
-			if (result > 0) {
+			if (result == StatusConstants.ADD_DUPLICATE_CODE) {
+				request.setAttribute("addStatus", StatusConstants.ADD_DUPLICATE);				
+			} else if (result == 1) {
 				request.setAttribute("addStatus", StatusConstants.ADD_SUCCESS);
 			} else {
 				request.setAttribute("addStatus", StatusConstants.ADD_FAIL);
@@ -52,12 +54,21 @@ public class ControllerServlet extends HttpServlet {
 			
 		} else if (request.getParameter("btnDeleteEmployee") != null) {
 			System.out.println("Delete");
-			dao.delete(request.getParameter("tbID"));
+			int result = dao.delete(request.getParameter("id"));
+			if (result > 0) {
+				request.setAttribute("deleteStatus", StatusConstants.DELETE_SUCCESS);
+			} else {
+				request.setAttribute("deleteStatus", StatusConstants.DELETE_FAIL);
+			}
+			
 		} else  if (request.getParameter("btnSearchEmployee") != null) {
 			System.out.println("Search");
-			Employee employee = dao.search(request.getParameter("tbID"));
+			Employee employee = dao.search(request.getParameter("id"));
 			if (employee != null) {
-				System.out.println(employee.getFirstName() + " " + employee.getLastName());
+				request.setAttribute("searchedEmployee", "Found " + employee.getFirstName() + " " + employee.getLastName());
+				request.setAttribute("findStatus", StatusConstants.FIND_SUCCESS);
+			} else {
+				request.setAttribute("findStatus", StatusConstants.FIND_FAIL);
 			}
 		} else if (request.getParameter("btnSignOut") != null) {
 			System.out.println("Sign out");

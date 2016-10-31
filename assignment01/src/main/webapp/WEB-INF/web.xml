@@ -35,11 +35,11 @@
   </servlet>
   <servlet>
   	<servlet-name>addEmployees</servlet-name>
-  	<jsp-file>/includes/addEmployees.jsp</jsp-file>
+  	<jsp-file>/includes/restricted/addEmployees.jsp</jsp-file>
   </servlet>
   <servlet>
   	<servlet-name>deleteEmployees</servlet-name>
-  	<jsp-file>/includes/deleteEmployees.jsp</jsp-file>
+  	<jsp-file>/includes/restricted/deleteEmployees.jsp</jsp-file>
   </servlet>
   <servlet>
   	<servlet-name>employees</servlet-name>

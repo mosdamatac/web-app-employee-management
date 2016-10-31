@@ -66,6 +66,7 @@ public class EmployeeDao {
 			System.out.println("Successfully added row: " + count);
 		} catch (SQLException ex) {
 			ex.printStackTrace();
+			return ex.getErrorCode();		
 		}
 		
 		return count;
