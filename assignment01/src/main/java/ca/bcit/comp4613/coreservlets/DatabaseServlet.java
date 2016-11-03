@@ -1,4 +1,4 @@
-package ca.bcit.comp4613.filter;
+package ca.bcit.comp4613.coreservlets;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -7,14 +7,9 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Properties;
 
-import javax.servlet.Filter;
-import javax.servlet.FilterChain;
-import javax.servlet.FilterConfig;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
-import javax.servlet.annotation.WebFilter;
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -23,29 +18,18 @@ import ca.bcit.comp4613.database.util.DBUtil;
 import ca.bcit.comp4613.database.util.EncryptDecrypt;
 
 /**
- * Servlet Filter implementation class DatabaseFilter
+ * Servlet implementation class DatabaseServlet
  */
-@WebFilter ( filterName="DatabaseFilter", urlPatterns="/*")
-public class DatabaseFilter implements Filter {
-	
-	private FilterConfig config;
-	private DBUtil dbUtil;
-
+public class DatabaseServlet extends HttpServlet {
 	/**
-	 * @see Filter#destroy()
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	public void destroy() {
-		dbUtil.shutdown();
-	}
-
-	/**
-	 * @see Filter#doFilter(ServletRequest, ServletResponse, FilterChain)
-	 */
-	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-		System.out.println("DatabaseFilter called...");
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        System.out.println("Database was called");
 		
-   	 	ServletContext context = config.getServletContext();
+		ServletContext context = getServletContext();
     	Properties dbProps = new Properties();
+    	DBUtil dbUtil;
          
         try {
         	InputStream inputStream = context.getResourceAsStream(DBConstants.DB_PROPERTIES_FILENAME);
@@ -80,17 +64,16 @@ public class DatabaseFilter implements Filter {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
-		// pass the request along the filter chain
-		chain.doFilter(request, response);
+        
+        response.sendRedirect("/index.jsp");
 	}
 
 	/**
-	 * @see Filter#init(FilterConfig)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	public void init(FilterConfig fConfig) throws ServletException {
-		System.out.println("DatabaseFilter initialized...");
-		this.config = fConfig;
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
 	}
 
 }

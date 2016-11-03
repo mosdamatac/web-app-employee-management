@@ -9,16 +9,6 @@
   </context-param>
   
   <!-- Filters -->
-  <filter>
-  	<filter-name>DatabaseFilter</filter-name>
-  	<filter-class>ca.bcit.comp4613.filter.DatabaseFilter</filter-class>
-  </filter>
-  
-  <!-- FilterMapping -->
-  <filter-mapping>
-  	<filter-name>DatabaseFilter</filter-name>
-  	<url-pattern>/*</url-pattern>
-  </filter-mapping>
   
   <!-- Servlets -->
   <servlet>
@@ -52,14 +42,28 @@
   <servlet>
   	<description>
   	</description>
-  	<display-name>ControllerServlet</display-name>
-  	<servlet-name>ControllerServlet</servlet-name>
-  	<servlet-class>ca.bcit.comp4613.coreservlets.ControllerServlet</servlet-class>
+  	<display-name>FormActionServlet</display-name>
+  	<servlet-name>FormActionServlet</servlet-name>
+  	<servlet-class>ca.bcit.comp4613.coreservlets.FormActionServlet</servlet-class>
   </servlet>
   
   <servlet>
   	<servlet-name>Logout</servlet-name>
   	<servlet-class>ca.bcit.comp4613.coreservlets.Logout</servlet-class>
+  </servlet>
+  <servlet>
+  	<description>
+  	</description>
+  	<display-name>ViewServlet</display-name>
+  	<servlet-name>ViewServlet</servlet-name>
+  	<servlet-class>ca.bcit.comp4613.coreservlets.ViewServlet</servlet-class>
+  </servlet>
+  <servlet>
+  	<description>
+  	</description>
+  	<display-name>DatabaseServlet</display-name>
+  	<servlet-name>DatabaseServlet</servlet-name>
+  	<servlet-class>ca.bcit.comp4613.coreservlets.DatabaseServlet</servlet-class>
   </servlet>
   
   <!-- Servlet mapping -->
@@ -68,12 +72,20 @@
   	<url-pattern>/index.jsp</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
-  	<servlet-name>ControllerServlet</servlet-name>
-  	<url-pattern>/ControllerServlet</url-pattern>
+  	<servlet-name>FormActionServlet</servlet-name>
+  	<url-pattern>/FormActionServlet</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
   	<servlet-name>Logout</servlet-name>
   	<url-pattern>/Logout</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>ViewServlet</servlet-name>
+  	<url-pattern>/ViewServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>DatabaseServlet</servlet-name>
+  	<url-pattern>/DatabaseServlet</url-pattern>
   </servlet-mapping>
   
   <welcome-file-list>

@@ -1,6 +1,7 @@
 package ca.bcit.comp4613.database.util;
 
 import java.sql.SQLException;
+import java.util.Properties;
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
 import java.sql.DriverManager;
@@ -33,7 +34,7 @@ public class DBUtil {
 		}
 		
 		try {
-			Class.forName(driver);
+			Class.forName(driver);			
 			dbConn = DriverManager.getConnection(url, username, password);
 		} catch (ClassNotFoundException ex) {
 			System.out.println(ex);

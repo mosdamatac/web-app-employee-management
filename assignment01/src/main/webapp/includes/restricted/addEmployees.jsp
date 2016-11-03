@@ -6,7 +6,7 @@
 		<h4>Add Employees</h4>
 	</div>
 	<div id="content">		
-		<form action="ControllerServlet" method="post">
+		<form action="FormActionServlet" method="post">
 			<table>
 				<tr>
 					<td class="labelTD"><label for="id">ID:</label></td>

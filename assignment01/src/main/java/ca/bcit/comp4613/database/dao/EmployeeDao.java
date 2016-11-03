@@ -7,16 +7,19 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Vector;
 
 import ca.bcit.comp4613.data.Employee;
+import ca.bcit.comp4613.data.EmployeeWithForwardSlashDOB;
+import ca.bcit.comp4613.data.IEmployee;
 import ca.bcit.comp4613.database.util.DBConstants;
 import ca.bcit.comp4613.database.util.DBUtil;
 
 public class EmployeeDao {
 
-	public List<Employee> get() {
+	public Vector<IEmployee> get() {
 		System.out.println("Retrieving employees");
-		List<Employee> employees = new ArrayList<Employee>();
+		Vector<IEmployee> employees = new Vector<>();
 		DBUtil db = DBUtil.getInstance();
 		Connection dbConn = null;
 		PreparedStatement ps = null;
@@ -28,9 +31,10 @@ public class EmployeeDao {
 			ps = dbConn.prepareStatement(sql);
 			ResultSet rs = ps.executeQuery();
 			
-			Employee employee;
+			IEmployee employee;
 			while (rs.next()) {
 				employee = new Employee();
+				employee = new EmployeeWithForwardSlashDOB(employee);
 				employee.setId(rs.getString(1));
 				employee.setFirstName(rs.getString(2));
 				employee.setLastName(rs.getString(3));
@@ -45,7 +49,7 @@ public class EmployeeDao {
 		return employees;
 	}
 	
-	public int add(Employee employee) {
+	public int add(IEmployee employee) {
 		DBUtil db = DBUtil.getInstance();
 		Connection dbConn = null;
 		PreparedStatement ps = null;
@@ -72,7 +76,7 @@ public class EmployeeDao {
 		return count;
 	}
 	
-	public int update(Employee employee) {
+	public int update(IEmployee employee) {
 		DBUtil db = DBUtil.getInstance();
 		Connection dbConn = null;
 		PreparedStatement ps = null;
@@ -122,13 +126,13 @@ public class EmployeeDao {
 		return count;
 	}
 	
-	public Employee search(String id) {
+	public IEmployee search(String id) {
 		DBUtil db = DBUtil.getInstance();
 		Connection dbConn = null;
 		PreparedStatement ps = null;
 		String sql = String.format("SELECT ID, firstName, lastName, dob FROM %s WHERE ID=?", DBConstants.EMPLOYEES_TABLE_NAME);
 		
-		Employee employee = null;
+		IEmployee employee = null;
 		try {
 			System.out.println("Finding employee: " + id);
 			dbConn = db.getConnection();

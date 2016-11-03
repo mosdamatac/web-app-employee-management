@@ -9,7 +9,7 @@ import java.sql.Date;
  * Information for Employee: ID, First Name, Last Name, Date of Birth.
  *
  */
-public class Employee {
+public class Employee implements IEmployee {
 	
 	private String id;
 	private String firstName;

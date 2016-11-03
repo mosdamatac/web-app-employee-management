@@ -5,7 +5,7 @@
 		<h4>Remove an Employee</h4>
 	</div>
 	<div id="content">
-		<form action="ControllerServlet" method="post">
+		<form action="FormActionServlet" method="post">
 			<table>
 				<tr>
 					<td class="labelTD"><label for="id">ID:</label></td>
