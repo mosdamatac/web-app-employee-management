@@ -7,7 +7,8 @@
 		<h4>Employees List</h4>
 	</div>
 	<div id="content">
-	<jsp:useBean id="employeeViewBean" class="ca.bcit.comp4613.data.viewbean.EmployeeViewBean" scope="session"/>
+	<jsp:useBean id="employeeViewBean" class="ca.bcit.comp4613.data.bean.EmployeeViewBean" scope="session"/>
+	
 		<table class="dataTable">
 			<tr>
 				<th>Id</th>

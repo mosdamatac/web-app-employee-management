@@ -9,12 +9,12 @@ import java.sql.Date;
  * Information for Employee: ID, First Name, Last Name, Date of Birth.
  *
  */
-public class Employee implements IEmployee {
+public abstract class Employee {
 	
-	private String id;
-	private String firstName;
-	private String lastName;
-	private Date dateOfBirth;
+	protected String id;
+	protected String firstName;
+	protected String lastName;
+	protected Date dateOfBirth;
 	
 	public String getId() {
 		return id;

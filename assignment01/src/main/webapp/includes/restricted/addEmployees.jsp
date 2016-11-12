@@ -21,8 +21,8 @@
 					<td><input type="text" name="lastName"/></td>
 				</tr>
 				<tr>
-					<td><label for="dateOfBirth" value="YYYY/MM/DD">DOE:</label></td>
-					<td><input type="text" name="dateOfBirth"/></td>
+					<td><label for="dateOfBirth">DOE:</label></td>
+					<td><input type="text" name="dateOfBirth" placeholder="YYYY/MM/DD"/></td>
 				</tr>
 			</table>			
 			<div id="footer">

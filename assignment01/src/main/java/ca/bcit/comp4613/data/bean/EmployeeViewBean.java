@@ -1,21 +1,17 @@
-package ca.bcit.comp4613.data.viewbean;
+package ca.bcit.comp4613.data.bean;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Vector;
 
-import ca.bcit.comp4613.data.EmployeeWithForwardSlashDOB;
-import ca.bcit.comp4613.data.IEmployee;
+import ca.bcit.comp4613.data.EmployeeDecorator;
 import ca.bcit.comp4613.database.dao.EmployeeDao;
-import ca.bcit.comp4613.database.util.DBUtil;
 
 public class EmployeeViewBean {
 
 	private int employeeCount;
 	private int currentPage = 1;
 	private int lastPage;
-	private Vector<EmployeeWithForwardSlashDOB> employees;
-	private static Vector<IEmployee> allEmployees;
+	private Vector<EmployeeDecorator> employees;
+	private Vector<EmployeeDecorator> allEmployees;
 	
 	public int getEmployeeCount() {
 		return employeeCount;
@@ -34,7 +30,7 @@ public class EmployeeViewBean {
 		return lastPage;
 	}
 	
-	public Vector<EmployeeWithForwardSlashDOB> getEmployees() {		
+	public Vector<EmployeeDecorator> getEmployees() {		
 		return employees;
 	}
 	
@@ -52,8 +48,7 @@ public class EmployeeViewBean {
 		int offset = (index + 5) < employeeCount ? (index + 5) : employeeCount;
 		
 		for (int i = index; i < offset; i++) {
-			EmployeeWithForwardSlashDOB employee = new EmployeeWithForwardSlashDOB(allEmployees.get(i));
-			employees.add(employee);
+			employees.add(allEmployees.get(i));
 		}
 	}
 }

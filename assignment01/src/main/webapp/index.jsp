@@ -11,7 +11,10 @@
 </head>
 <body>
 <div>
-<jsp:include page="/DatabaseServlet" flush="true"/>
+<%-- <jsp:include page="/DatabaseServlet" flush="true"/> --%>
+	<jsp:useBean id="dbBean" class="ca.bcit.comp4613.database.util.DBBean" scope="session">
+		<jsp:setProperty name="dbBean" property="context" value='<%= request.getServletContext() %>'/>
+	</jsp:useBean>
 	<div id="left">
 		<div class="pageSpace"><jsp:include page="/includes/Employees.jsp" flush="true"/></div>
 		<div class="pageSpace"><jsp:include page="/includes/Logout.jsp" flush="true"/></div>
