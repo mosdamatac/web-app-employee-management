@@ -1,16 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" version="3.0">
-  <display-name>Archetype Created Web Application</display-name>
-  
+  <display-name>COMP 4613 Assignment 02</display-name>
   <context-param>
     <param-name>title</param-name>
     <param-value>Employee Admin Tool</param-value>
   </context-param>
-  
-  <servlet>
-    <servlet-name>index</servlet-name>
-    <jsp-file>/index.jsp</jsp-file>
-  </servlet>
+  <context-param>
+    <param-name>passcode</param-name>
+    <param-value>comp4613</param-value>
+  </context-param>
   <servlet>
     <servlet-name>login</servlet-name>
     <jsp-file>/Login.jsp</jsp-file>
@@ -32,10 +30,6 @@
     <jsp-file>/includes/Employees.jsp</jsp-file>
   </servlet>
   <servlet>
-    <servlet-name>findEmployees</servlet-name>
-    <jsp-file>/includes/findEmployees.jsp</jsp-file>
-  </servlet>
-  <servlet>
     <description>
   	</description>
     <display-name>FormActionServlet</display-name>
@@ -54,10 +48,6 @@
     <servlet-class>ca.bcit.comp4613.coreservlets.ViewServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>index</servlet-name>
-    <url-pattern>/index.jsp</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
     <servlet-name>FormActionServlet</servlet-name>
     <url-pattern>/FormActionServlet</url-pattern>
   </servlet-mapping>
@@ -70,7 +60,7 @@
     <url-pattern>/ViewServlet</url-pattern>
   </servlet-mapping>
   <welcome-file-list>
-    <welcome-file>/index.jsp</welcome-file>
+  	<welcome-file>/faces/index.xhtml</welcome-file>
   </welcome-file-list>
   <security-constraint>
     <web-resource-collection>
@@ -89,4 +79,26 @@
       <form-error-page>/login-error.html</form-error-page>
     </form-login-config>
   </login-config>
+  
+  <servlet>
+    <servlet-name>Faces Servlet</servlet-name>
+    <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Faces Servlet</servlet-name>
+    <url-pattern>*.xhtml</url-pattern>
+  </servlet-mapping>
+  <context-param>
+    <description>State saving method: 'client' or 'server' (=default). See JSF Specification 2.5.2</description>
+    <param-name>javax.faces.STATE_SAVING_METHOD</param-name>
+    <param-value>client</param-value>
+  </context-param>
+  <context-param>
+    <param-name>javax.servlet.jsp.jstl.fmt.localizationContext</param-name>
+    <param-value>resources.application</param-value>
+  </context-param>
+  <listener>
+    <listener-class>com.sun.faces.config.ConfigureListener</listener-class>
+  </listener>
 </web-app>

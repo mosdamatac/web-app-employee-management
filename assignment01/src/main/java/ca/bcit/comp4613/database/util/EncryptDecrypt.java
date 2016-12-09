@@ -6,16 +6,15 @@ import org.jasypt.encryption.pbe.StandardPBEStringEncryptor;
 
 public class EncryptDecrypt {
 	
-	private String passcodeKey;
+	private String passcode;
 	private String encryptedValue;
 	
-	public void init(String passcodeKey, String encryptedValue) {
-		this.passcodeKey = passcodeKey;
+	public void init(String passcode, String encryptedValue) {
+		this.passcode = passcode;
 		this.encryptedValue = encryptedValue;
 	}
 	
 	public String decryptValue() {
-		String passcode = System.getProperty(passcodeKey);
 		
 		StandardPBEStringEncryptor encryptor = new StandardPBEStringEncryptor();
 		encryptor.setPassword(passcode);

@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<h:outputStylesheet library="css" name="style.css"/>
+	<title>#{msgs.window_title}</title>
+</h:head>
+<h:body>
+<f:metadata>
+	<f:event type="preRenderView" listener="#{dbBean.init}"/>
+</f:metadata>
+<div>
+	<div id="left">
+		<!-- <div class="pageSpace"><jsp:include page="/includes/Employees.jsp" flush="true"/></div>
+		<div class="pageSpace"><jsp:include page="/includes/Logout.jsp" flush="true"/></div> -->
+		<div class="pageSpace">
+		<div id="main">
+			<div id="header">
+				<h4>#{msgs.sign_off}</h4>
+			</div>
+			<div id="footer">
+				<h:form>
+					<h:commandButton name="btnSignOut" value="#{msgs.sign_out}"
+						action="#{userManager.logout}"/>
+				</h:form>
+			</div>
+		</div>
+		</div>
+	</div>
+	<div id="right">
+		<!-- <c:if test="${pageContext.request.userPrincipal.name eq 'admin'}">
+			<div class="pageSpace"><jsp:include page="/includes/restricted/addEmployees.jsp" flush="true"/></div>
+		</c:if>
+			<div class="pageSpace"><jsp:include page="/includes/findEmployees.jsp" flush="true"/></div>
+		<c:if test="${pageContext.request.userPrincipal.name eq 'admin'}">
+			<div class="pageSpace"><jsp:include page="/includes/restricted/deleteEmployees.jsp" flush="true"/></div>
+		</c:if> -->
+	
+		<!-- ADD EMPLOYEE -->
+		<div class="pageSpace">
+		
+		<div id="main">
+			<div id="header">
+				<h4>#{msgs.add_employee}</h4>
+			</div>			
+			<div id="content">
+				<h:form>
+					<table>
+						<tr>
+							<td class="labelTD"><label for="id">#{msgs.id}</label></td>
+							<td><h:inputText id="employeeID" value="#{employeeBean.employeeID}"/></td>
+						</tr>
+						<tr>
+							<td><label for="firstName">#{msgs.first}<br/>#{msgs.name}</label></td>
+							<td><h:inputText id="firstName" value="#{employeeBean.firstName}"/></td>
+						</tr>
+						<tr>
+							<td><label for="lastName">#{msgs.last}<br/>#{msgs.name}</label></td>
+							<td><h:inputText id="lastName" value="#{employeeBean.lastName}"/></td>
+						</tr>
+						<tr>
+							<td><label for="dateOfBirth">#{msgs.date_of_birth}</label></td>
+							<td><h:inputText id="dateOfBirth" value="#{employeeBean.dateOfBirth}"/></td>
+							<p:watermark for="dateOfBirth" value="YYYY/MM/DD"/>
+						</tr>
+					</table>			
+					<div id="footer">
+						<h:commandButton id="btnAdd" value="#{msgs.add_employee}"
+							actionListener="#{employeeBean.commandClicked}"/>
+					</div>
+					<h:outputText value="#{employeeBean.addResult}"/>
+				</h:form>
+			</div>
+		</div>
+		</div>
+		
+		<!-- FIND EMPLOYEE -->		
+		<div class="pageSpace">
+	
+		<div id="main">
+			<div id="header">
+				<h4>#{msgs.find_employee}</h4>
+			</div>
+			<div id="content">
+				<h:form>
+					<table>
+						<tr>
+							<td class="labelTD"><label for="id">#{msgs.id}</label></td>
+							<td><h:inputText id="employeeID" value="#{employeeBean.employeeID}"
+								actionListener="#{employeeBean.commandClicked}"/><br/></td>
+						</tr>
+					</table>
+					<div id="footer">
+						<h:commandButton id="btnSearch" value="#{msgs.search}"
+							actionListener="#{employeeBean.commandClicked}"/>
+					</div>
+					<h:outputText value="#{employeeBean.searchResult}"/>
+				</h:form>
+			</div>
+		</div>
+		</div>
+		
+		<!-- DELETE EMPLOYEE -->
+		<div class="pageSpace">
+		
+		<div id="main">
+			<div id="header">
+				<h4>Remove an Employee</h4>
+			</div>
+			<div id="content">
+				<form action="FormActionServlet" method="post">
+					<table>
+						<tr>
+							<td class="labelTD"><label for="id">ID:</label></td>
+							<td><input type="text" name="id"/><br/></td>
+						</tr>
+					</table>
+					<div id="footer">
+						<input type="submit" name="btnDeleteEmployee" value="Delete"/>
+					</div>
+					<label id="statusCode">${requestScope.deleteStatus }</label>
+				</form>
+			</div>
+		</div>		
+		</div>
+		
+	</div>
+</div>
+</h:body>
+</html>

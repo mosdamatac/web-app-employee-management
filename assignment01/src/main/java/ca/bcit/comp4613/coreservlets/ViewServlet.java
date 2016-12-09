@@ -55,8 +55,8 @@ public class ViewServlet extends HttpServlet {
 			bean.setCurrentPage(Integer.parseInt(request.getParameter("page")));
 		}
 		
-		RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
-		rd.forward(request, response);
+		//RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
+		//rd.forward(request, response);
 	}
 
 	/**

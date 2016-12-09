@@ -89,8 +89,8 @@ public class FormActionServlet extends HttpServlet {
 			System.out.println("Sign out");
 		}
 		
-		RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
-		rd.forward(request, response);
+		//RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
+		//rd.forward(request, response);
 	}
 
 	/**
